@@ -27,7 +27,7 @@ export const fetchMens = async () => {
 
 export const fetchWomens = async () => {
   const result = await fetch(
-    "https://fakestoreapi.com/products/category/electronics"
+    "https://fakestoreapi.com/products/category/womensclothing"
   ).then((data) => {
     return data.json();
   });

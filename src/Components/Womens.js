@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { fetchElectronics } from "../Hooks/fetchItems";
+import { fetchWomens } from "../Hooks/fetchItems";
 import { Card, Button } from "react-bootstrap";
 
-const Electronics = () => {
-  const [electronicsItems, setElectronicsItems] = useState([]);
-  fetchElectronics().then((data) => setElectronicsItems(data));
-  console.log(electronicsItems);
+const Womens = () => {
+  const [womensItems, setWomensItems] = useState([]);
+  fetchWomens().then((data) => setWomensItems(data));
+  console.log(womensItems);
   return (
     <>
-      {electronicsItems.map((eitem, key) => {
+      {womensItems.map((eitem, key) => {
         return (
           <Card
             style={{ width: "20rem", display: "inline-block", margin: "3%" }}
@@ -21,10 +21,7 @@ const Electronics = () => {
             <Card.Body>
               <Card.Title>{eitem.title}</Card.Title>
               <Card.Text>Price: ${eitem.price}</Card.Text>
-
-              <a href={Electronics}>
-                <Button variant="primary">Next</Button>
-              </a>
+              <Button variant="primary">Next</Button>
             </Card.Body>
           </Card>
         );
@@ -33,4 +30,4 @@ const Electronics = () => {
   );
 };
 
-export default Electronics;
+export default Womens;
