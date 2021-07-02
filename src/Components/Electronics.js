@@ -1,17 +1,22 @@
 import { useState } from "react";
 import { fetchElectronics } from "../Hooks/fetchItems";
 import { Card, Button } from "react-bootstrap";
+import { fetchElectronicsDetails } from "../Hooks/fetchDetails";
+import ItemsList from "./ItemsList";
 
 const Electronics = () => {
   const [electronicsItems, setElectronicsItems] = useState([]);
   fetchElectronics().then((data) => setElectronicsItems(data));
-  console.log(electronicsItems);
+
   return (
     <>
       {electronicsItems.map((eitem, key) => {
         return (
           <Card
-            style={{ width: "18rem", display: "inline-block", margin: "3%" }}
+            style={
+              ({ width: "18rem", display: "inline-block", margin: "3%" },
+              (key = { key }))
+            }
           >
             <Card.Img
               variant="top"
@@ -21,10 +26,12 @@ const Electronics = () => {
             <Card.Body>
               <Card.Title>{eitem.title}</Card.Title>
               <Card.Text>Price: ${eitem.price}</Card.Text>
-
-              <a href={Electronics}>
-                <Button variant="primary">Next</Button>
-              </a>
+              <ItemsList
+                key={eitem.id}
+                title={eitem.title}
+                price={eitem.price}
+                description={eitem.description}
+              />
             </Card.Body>
           </Card>
         );

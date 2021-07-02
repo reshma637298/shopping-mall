@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fetchJewelery } from "../Hooks/fetchItems";
 import { Card, Button } from "react-bootstrap";
+import ItemsList from "./ItemsList";
 
 const Jewelery = () => {
   const [jeweleryItems, setJeweleryItems] = useState([]);
@@ -22,7 +23,12 @@ const Jewelery = () => {
               <Card.Title>{eitem.title}</Card.Title>
               <Card.Text>Price: ${eitem.price}</Card.Text>
 
-              <Button variant="primary">Next</Button>
+              <ItemsList
+                key={eitem.id}
+                title={eitem.title}
+                price={eitem.price}
+                description={eitem.description}
+              />
             </Card.Body>
           </Card>
         );

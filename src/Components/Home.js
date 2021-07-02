@@ -5,6 +5,7 @@ import Electronics from "./Electronics";
 import Jewelery from "./Jewelery";
 import Mens from "./Mens";
 import Womens from "./Womens";
+import Cart from "./Cart";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Home = () => {
@@ -20,14 +21,17 @@ const Home = () => {
           <Route path="/electronics">
             <Electronics />
           </Route>
-          <Route exact path="/jewelery">
+          <Route path="/jewelery">
             <Jewelery />
           </Route>
-          <Route exact path="/mens">
+          <Route path="/mens">
             <Mens />
           </Route>
-          <Route exact path="/womens">
+          <Route path="/womens">
             <Womens />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </Switch>
       </Router>

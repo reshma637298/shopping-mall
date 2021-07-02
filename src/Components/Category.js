@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import Electronics from "./Electronics";
 import useCategory from "../Hooks/fetchcategory";
+import { useHistory } from "react-router-dom";
 import CategoryImage1 from "../Assets/category1.jpg";
 import CategoryImage2 from "../Assets/category2.jpg";
 import CategoryImage3 from "../Assets/category3.jpg";
@@ -9,10 +10,16 @@ import CategoryImage4 from "../Assets/category4.jpg";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
-  const [isElectronics, setIsElectronics] = useState(0);
-
+  const history = useHistory();
   useCategory().then((data) => setCategories(data));
 
+  const displayElectronics = () => {
+    history.push("/electronics");
+  };
+
+  const displayJewelery = () => {
+    history.push("/jewelery");
+  };
   return (
     <>
       <div style={{ marginTop: "6%" }}>
@@ -24,9 +31,9 @@ const Category = () => {
               Every electronic items with high performance and top quality.
             </Card.Text>
 
-            <a href={Electronics}>
-              <Button variant="primary">Next</Button>
-            </a>
+            <Button variant="primary" onClick={displayElectronics}>
+              Next
+            </Button>
           </Card.Body>
         </Card>
 
@@ -35,7 +42,9 @@ const Category = () => {
           <Card.Body>
             <Card.Title>{categories[1]}</Card.Title>
             <Card.Text>ISO Certified, BIS, Hallmark, 916 Jewellery</Card.Text>
-            <Button variant="primary">Next</Button>
+            <Button variant="primary" onClick={displayJewelery}>
+              Next
+            </Button>
           </Card.Body>
         </Card>
 
