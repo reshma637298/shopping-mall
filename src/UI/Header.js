@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Button, NavDropdown } from "react-bootstrap";
-import useCategory from "../Hooks/fetchcategory";
+import fetchCategory from "../Hooks/fetchcategory";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
-  useCategory().then((data) => setCategories(data));
+  useEffect(() => {
+    fetchCategory().then((data) => setCategories(data));
+  });
+
   const history = useHistory();
 
   const displayCart = () => {
@@ -43,7 +46,6 @@ const Header = () => {
         <Button
           variant="primary"
           style={{ position: "absolute", right: "20px" }}
-          onClick={displayCart}
         >
           Cart
         </Button>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import Electronics from "./Electronics";
-import useCategory from "../Hooks/fetchcategory";
+import fetchCategory from "../Hooks/fetchcategory";
 import { useHistory } from "react-router-dom";
 import CategoryImage1 from "../Assets/category1.jpg";
 import CategoryImage2 from "../Assets/category2.jpg";
@@ -11,7 +11,9 @@ import CategoryImage4 from "../Assets/category4.jpg";
 const Category = () => {
   const [categories, setCategories] = useState([]);
   const history = useHistory();
-  useCategory().then((data) => setCategories(data));
+  useEffect(() => {
+    fetchCategory().then((data) => setCategories(data));
+  }, []);
 
   const displayElectronics = () => {
     history.push("/electronics");
