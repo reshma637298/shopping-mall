@@ -1,31 +1,34 @@
 import { fetchElectronicsDetails } from "../Hooks/fetchDetails";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Alert, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const ItemsList = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = () => {
-    const newCart = [
-      ...cartItems,
-      { product: props.electronicsDetails, quantity: 1 },
-    ];
-    setCartItems(newCart);
-    console.log("cartitem is ", cartItems);
-    console.log(cartItems.length);
-    //else {
-    //   const itemInCartIndex = items.findIndex(
-    //     (x) => x.cartItem.id === electronicsDetails.id
-    //   );
-    //   if (itemInCartIndex === -1) {
-    //     const newItem = [{ cartItem: electronicsDetails, quantity: 1 }];
-    //     setItems(newItem);
-    //   } else {
-    //     const itemCopy = [...items];
-    //     itemCopy[itemInCartIndex].quantity += 1;
-    //     setItems(itemCopy);
-    //   }
-    // }
+    if (cartItems.length === 0) {
+      const newItem = [{ product: props.electronicsDetails, quantity: 1 }];
+      setCartItems(newItem);
+      console.log("first entry", cartItems);
+    } else {
+      const itemInCartIndex = cartItems.findIndex(
+        (x) => x.product.id === props.electronicsDetails.id
+      );
+      if (itemInCartIndex === -1) {
+        const newItem = [
+          ...cartItems,
+          { product: props.electronicsDetails, quantity: 1 },
+        ];
+        setCartItems(newItem);
+        console.log("no same entry", cartItems);
+      } else {
+        const itemCopy = [...cartItems];
+        itemCopy[itemInCartIndex].quantity += 1;
+        setCartItems(itemCopy);
+        console.log("already item exists", cartItems);
+      }
+    }
+    //console.log(cartItems);
   };
 
   return (

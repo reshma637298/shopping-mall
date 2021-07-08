@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchElectronics } from "../Hooks/fetchItems";
 import { Card, Button } from "react-bootstrap";
 import ItemsList from "./ItemsList";
-import { fetchElectronicsDetails } from "../Hooks/fetchDetails";
+import { fetchDetails } from "../Hooks/fetchDetails";
 
 const Electronics = () => {
   const [electronicsItems, setElectronicsItems] = useState([]);
@@ -13,7 +13,7 @@ const Electronics = () => {
   }, []);
 
   const displayDescription = (id) => {
-    fetchElectronicsDetails(id).then((data) => setElectronicsDetails(data));
+    fetchDetails(id).then((data) => setElectronicsDetails(data));
     setIsOpen(true);
   };
   const hideModal = () => {

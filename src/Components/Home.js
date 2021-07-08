@@ -5,6 +5,8 @@ import Electronics from "./Electronics";
 import Jewelery from "./Jewelery";
 import Mens from "./Mens";
 import Womens from "./Womens";
+import Cart from "./Cart";
+import Trail from "./Trail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Home = () => {
@@ -29,9 +31,9 @@ const Home = () => {
           <Route path="/womens">
             <Womens />
           </Route>
-          {/* <Route path="/cart">
+          <Route path="/cart">
             <Cart />
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
     </>
