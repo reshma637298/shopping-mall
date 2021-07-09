@@ -1,9 +1,17 @@
-import { fetchElectronicsDetails } from "../Hooks/fetchDetails";
 import { Button, Modal, Alert, Row, Col } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import React from "react";
+// import { CartProvider } from "./cart-context";
+import { CartContext } from "./cart-context";
 
 const ItemsList = (props) => {
-  const [cartItems, setCartItems] = useState([]);
+  //const [cartItems, setCartItems] = useState([]);
+
+  // const CartContext = React.createContext({});
+
+  // const CartProvider = CartContext.Provider;
+
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const addToCart = () => {
     if (cartItems.length === 0) {

@@ -34,7 +34,7 @@ const Jewelery = () => {
               style={{ height: "150px", width: "150px" }}
             />
             <Card.Body>
-              <Card.Title>{eitem.title}</Card.Title>
+              <Card.Title style={{ height: "100px" }}>{eitem.title}</Card.Title>
               <Card.Text>Price: ${eitem.price}</Card.Text>
               <Button
                 variant="primary"

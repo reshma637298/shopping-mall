@@ -46,6 +46,7 @@ const Header = () => {
         <Button
           variant="primary"
           style={{ position: "absolute", right: "20px" }}
+          onClick={displayCart}
         >
           Cart
         </Button>
