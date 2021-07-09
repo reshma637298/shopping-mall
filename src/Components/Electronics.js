@@ -25,17 +25,19 @@ const Electronics = () => {
         return (
           <>
             <Card
-              style={{ width: "18rem", display: "inline-block", margin: "3%" }}
+              style={{ width: "19rem", display: "inline-block", margin: "3%" }}
               key={key}
             >
               <Card.Img
                 variant="top"
                 src={eitem.image}
-                style={{ height: "150px", width: "150px" }}
+                style={{ height: "100px", width: "150px" }}
               />
               <Card.Body>
                 <Card.Text>Id: {eitem.id}</Card.Text>
-                <Card.Title>{eitem.title}</Card.Title>
+                <Card.Title style={{ height: "150px" }}>
+                  {eitem.title}
+                </Card.Title>
                 <Card.Text>Price: ${eitem.price}</Card.Text>
                 <Button
                   variant="primary"
